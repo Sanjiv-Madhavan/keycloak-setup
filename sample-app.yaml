@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-app
+  template:
+    metadata:
+      labels:
+        app: sample-app
+    spec:
+      containers:
+        - name: sample-app
+          image: sanshunoisky/sample-app:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: KEYCLOAK_URL
+              value: "http://keycloak.local:8080"
+            - name: CLIENT_ID
+              value: "sample-app"
+            - name: CLIENT_SECRET
+              value: "XZ5vt3cpbey5npWd7ncO5uyWxmYZQRMt"
+            - name: APP_PORT
+              value: "3000"
+            - name: KEYCLOAK_REALM
+              value: "provider-app-realm"
+            - name: REDIRECT_URI
+              value: http://sample-app.local/callback
+            - name: SCOPE
+              value: openid

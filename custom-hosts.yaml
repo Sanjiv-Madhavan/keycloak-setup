@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostaliases-pod
+spec:
+  restartPolicy: Never
+  hostAliases:
+  - ip: "10.103.19.201"
+    hostnames:
+    - "keycloak.local"
+  containers:
+  - name: cat-hosts
+    image: busybox:1.28
+    command:
+    - cat
+    args:
+    - "/etc/hosts"
