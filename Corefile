@@ -12,7 +12,6 @@
         }
         prometheus :9153
         hosts {
-           192.168.65.254 host.minikube.internal
            fallthrough
         }
         forward . /etc/resolv.conf {
